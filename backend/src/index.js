@@ -12,9 +12,10 @@ const PORT = process.env.PORT || 5000;
 
 // ─── CORS ────────────────────────────────────────────────────────────────────
 const allowedOrigins = [
-  process.env.FRONTEND_URL || 'http://localhost:5173',
+  (process.env.FRONTEND_URL || 'http://localhost:5173').replace(/\/$/, ''), // Remove any accidental trailing slashes from the Render env var
   'http://localhost:5173',
   'http://localhost:3000',
+  'https://votex-delta.vercel.app' // Explicitly added your live Vercel URL!
 ];
 
 app.use(
